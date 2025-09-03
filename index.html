@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>hellosite</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo">hellosite</span>
+        <span class="sub">به جهانِ ظریفِ تجربه‌ها خوش آمدید</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-left">
+        <div class="welcome">
+          <h1 class="welcome-title">خوش آمدید</h1>
+          <p class="welcome-sub">اینجا محلی‌ست برای کشف، رشد و لذت از ساختن — هر بازدید یک آغاز تازه است.</p>
+        </div>
+
+        <div class="story-card" id="storyCard">
+          <div class="story-top">
+            <h2>داستانِ این‌جا</h2>
+            <div class="story-actions">
+              <button id="translateBtn" class="btn small">ترجمه ↔ EN</button>
+              <button id="expandBtn" class="btn small outline">بزرگ‌تر</button>
+            </div>
+          </div>
+          <div class="story-content" id="storyContent" tabindex="0" aria-live="polite">
+            <!-- متن فارسی (طویل و داستانی) قرار می‌گیرد توسط HTML پایین -->
+          </div>
+        </div>
+
+        <div class="survey-card">
+          <h3>نظرسنجی</h3>
+          <p>آیا این سایت را دوست دارید؟</p>
+          <div class="survey-options">
+            <label><input type="radio" name="vote" value="yes"> بله، خیلی</label>
+            <label><input type="radio" name="vote" value="maybe"> تا حدودی</label>
+            <label><input type="radio" name="vote" value="no"> نه چندان</label>
+          </div>
+          <div class="survey-actions">
+            <button id="voteBtn" class="btn">ثبت رای</button>
+            <button id="resetSurvey" class="btn ghost">بازنشانی</button>
+          </div>
+          <div id="surveyResult" class="survey-result" aria-live="polite"></div>
+        </div>
+
+      </div>
+
+      <aside class="hero-right">
+        <div class="comment-panel">
+          <h3>💬 نظرات کاربران</h3>
+          <input id="cname" placeholder="نام شما" />
+          <textarea id="cmessage" rows="4" placeholder="نظر شما"></textarea>
+          <div class="comment-actions">
+            <button id="addComment" class="btn">ارسال نظر</button>
+            <button id="clearComments" class="btn ghost">پاک کردن همه</button>
+          </div>
+          <div id="commentList" class="comment-list" aria-live="polite"></div>
+        </div>
+
+        <div class="meta-panel">
+          <p>سازنده: <strong>محمد مهدی</strong></p>
+          <p>نسخه: <strong>1.0</strong></p>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="foot">
+      <small>© hellosite — crafted with care</small>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
