@@ -1,30 +1,86 @@
-body, html {
+/* استایل کلی */
+body {
   margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: Arial, sans-serif;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background: linear-gradient(45deg, red, blue);
+  font-family: 'Segoe UI', sans-serif;
   color: white;
   text-align: center;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-.title {
-  font-size: 60px;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 10px black;
+/* متن RGB موجی */
+.rgb-text {
+  font-size: 3rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, red, blue, purple, red);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: rgbWave 4s infinite linear;
 }
 
-.story-box {
+@keyframes rgbWave {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* باکس خوش آمدید */
+.welcome-box {
+  margin: 40px auto;
+  padding: 20px;
+  width: 60%;
+  background: rgba(0,0,0,0.4);
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(255, 0, 255, 0.6);
+}
+
+/* متن نئونی */
+.neon-text {
+  color: #fff;
+  text-shadow: 0 0 10px cyan, 0 0 20px blue, 0 0 40px violet;
+}
+
+/* دکمه نئونی */
+.neon-btn {
+  margin: 15px;
+  padding: 12px 25px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: white;
+  background: transparent;
+  border-radius: 8px;
+  text-shadow: 0 0 10px white;
+  box-shadow: 0 0 10px cyan, 0 0 20px blue, 0 0 40px violet;
+  transition: 0.3s;
+}
+
+.neon-btn:hover {
+  box-shadow: 0 0 20px red, 0 0 40px blue, 0 0 80px violet;
+  transform: scale(1.1);
+}
+
+/* باکس نظرات */
+.comments {
+  margin: 50px auto;
+  width: 60%;
   background: rgba(0,0,0,0.5);
   padding: 20px;
   border-radius: 15px;
-  width: 70%;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+}
+
+.comments input, .comments textarea {
+  width: 90%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+.show-comments {
+  margin-top: 20px;
+  text-align: left;
 }
