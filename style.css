@@ -1,111 +1,86 @@
-:root{
-  --glass: rgba(255,255,255,0.08);
-  --glass-2: rgba(255,255,255,0.06);
-  --card: rgba(255,255,255,0.06);
-  --accent: #7C3AED;
-  --accent-2: #06B6D4;
-  --text: #f8fafc;
-  --muted: rgba(255,255,255,0.75);
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Orbitron', sans-serif;
+  overflow-x: hidden;
 }
 
-/* Reset */
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  background: linear-gradient(120deg, rgba(0,0,0,0.12), rgba(255,255,255,0.02));
-  min-height:100vh;
-  display:flex;
-  align-items:stretch;
-  justify-content:center;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: white;
+  text-align: center;
+  background: linear-gradient(270deg, #ff0047, #2bff00, #0047ff, #ffb300, #ff00ff, #00ffff);
+  background-size: 1200% 1200%;
+  animation: gradientBG 25s ease infinite;
 }
 
-/* RGB soft animated background layer */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-2;
-  background: radial-gradient(circle at 10% 20%, rgba(255,0,100,0.12), transparent 12%),
-              radial-gradient(circle at 80% 70%, rgba(0,200,255,0.12), transparent 14%),
-              radial-gradient(circle at 50% 50%, rgba(120,0,255,0.08), transparent 16%);
-  backdrop-filter: blur(8px);
-  animation: bgMove 18s linear infinite;
-}
-@keyframes bgMove{
-  0%{transform:translateY(0) scale(1)}
-  25%{transform:translateY(-6%) scale(1.02)}
-  50%{transform:translateY(0) scale(1.04)}
-  75%{transform:translateY(6%) scale(1.02)}
-  100%{transform:translateY(0) scale(1)}
+@keyframes gradientBG {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
 }
 
-/* subtle overlay gradient */
-body::after{
-  content:"";
-  position:fixed; inset:0; z-index:-1;
-  background: linear-gradient(180deg, rgba(12,12,20,0.12), rgba(12,12,20,0.08));
-  mix-blend-mode:overlay;
+.title {
+  font-size: 80px;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 25px #000;
 }
 
-/* Page layout */
-.page{width:100%; max-width:1200px; margin:40px; display:flex; flex-direction:column; gap:22px}
-.topbar{display:flex; justify-content:center; align-items:center; padding:10px 20px}
-.brand{display:flex; flex-direction:column; align-items:center}
-.logo{font-family: 'Playfair Display', serif; font-size:44px; letter-spacing:2px; color:gold; text-shadow:0 6px 30px rgba(0,0,0,0.6)}
-.sub{font-size:12px; color:var(--muted); margin-top:6px}
-
-/* hero */
-.hero{display:flex; gap:28px; align-items:flex-start}
-.hero-left{flex:1; display:flex; flex-direction:column; gap:18px}
-.hero-right{width:380px; display:flex; flex-direction:column; gap:18px}
-
-/* welcome */
-.welcome{background:linear-gradient(135deg, rgba(255,255,255,0.04), rgba(0,0,0,0.06)); padding:28px; border-radius:18px; box-shadow: 0 14px 40px rgba(10,10,20,0.35)}
-.welcome-title{font-family:'Playfair Display', serif; font-size:36px; margin-bottom:8px; color:#fff}
-.welcome-sub{color:var(--muted)}
-
-/* story card */
-.story-card{background:var(--card); border-radius:16px; padding:16px; box-shadow:0 10px 30px rgba(0,0,0,0.35)}
-.story-top{display:flex; align-items:center; justify-content:space-between; gap:10px}
-.story-top h2{margin:0; font-size:18px; color:#fff}
-.story-actions{display:flex; gap:8px}
-.btn{background:var(--accent); color:white; border:none; padding:8px 12px; border-radius:8px; cursor:pointer; font-weight:600}
-.btn.small{padding:6px 10px; font-size:13px}
-.btn.ghost{background:transparent; border:1px solid rgba(255,255,255,0.08)}
-.btn.outline{background:transparent; border:1px solid rgba(255,255,255,0.08); color:var(--muted)}
-.story-content{margin-top:12px; max-height:360px; overflow:auto; padding:10px; line-height:1.9; color:var(--muted); font-size:15px; border-radius:8px; background:linear-gradient(180deg, rgba(0,0,0,0.03), rgba(255,255,255,0.01))}
-
-/* survey */
-.survey-card{background:var(--card); padding:14px; border-radius:12px}
-.survey-card h3{margin:0 0 6px 0; color:#fff}
-.survey-options{display:flex; gap:12px; justify-content:flex-start; margin:10px 0; flex-wrap:wrap}
-.survey-options label{background:rgba(255,255,255,0.03); padding:8px 12px; border-radius:10px; cursor:pointer; color:var(--muted)}
-.survey-actions{display:flex; gap:10px; margin-top:8px}
-.survey-result{margin-top:12px; color:var(--muted); font-size:14px}
-
-/* comment panel */
-.comment-panel{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.03)); padding:16px; border-radius:14px}
-.comment-panel h3{margin:0 0 8px 0}
-.comment-panel input, .comment-panel textarea{width:100%; padding:10px; margin:8px 0; border-radius:10px; border:none; background:rgba(255,255,255,0.03); color:var(--text)}
-.comment-actions{display:flex; gap:8px; justify-content:space-between}
-.comment-list{margin-top:12px; display:flex; flex-direction:column; gap:8px; max-height:260px; overflow:auto}
-.comment-item{background:linear-gradient(135deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03)); padding:10px; border-radius:10px; font-size:14px; color:var(--muted)}
-
-/* meta */
-.meta-panel{background:var(--glass); padding:12px; border-radius:12px; text-align:right; color:var(--muted)}
-
-/* footer */
-.foot{display:flex; justify-content:center; padding:14px; color:var(--muted); font-size:13px}
-
-/* responsive */
-@media(max-width:980px){
-  .hero{flex-direction:column}
-  .hero-right{width:100%}
-  .page{margin:18px}
+.story-box, .survey-box {
+  background: rgba(0,0,0,0.65);
+  padding: 25px;
+  margin: 15px;
+  border-radius: 25px;
+  width: 80%;
+  max-width: 750px;
+  box-shadow: 0 0 40px rgba(255,255,255,0.4);
+  animation: fadeIn 2s ease;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.story-box:hover, .survey-box:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 0 60px rgba(255,255,255,0.7);
+}
+
+button {
+  padding: 14px 28px;
+  margin: 10px;
+  border: none;
+  border-radius: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 0 20px rgba(255,255,255,0.3);
+  font-size: 18px;
+  background: linear-gradient(45deg, #ff0047, #0047ff, #00ff00, #ffb300);
+  background-size: 400% 400%;
+  animation: btnGradient 10s ease infinite;
+}
+
+button:hover {
+  transform: scale(1.25);
+  box-shadow: 0 0 35px rgba(255,255,255,0.9);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+@keyframes btnGradient {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
+
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
