@@ -1,40 +1,123 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HelloSite - RGB Gaming</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HelloSite — Ultimate RGB Experience</title>
+  <meta name="description" content="یک تجربه RGB گیمینگ، نئونی، شیشه‌ای و انیمیشنی؛ با داستان، نظرسنجی، و نظرات—همه در یک صفحه." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <header>
-    <h1 class="rgb-text">HelloSite</h1>
+<body class="theme-dark">
+  <!-- لایه پارتیکل و گرادیان -->
+  <canvas id="fx-canvas" aria-hidden="true"></canvas>
+  <div class="rgb-gradient" aria-hidden="true"></div>
+
+  <!-- نوار بالایی -->
+  <header class="topbar">
+    <div class="brand" role="banner" aria-label="HelloSite Brand">
+      <span class="logo">HelloSite</span>
+      <span class="tag">RGB • Neon • Glass</span>
+    </div>
+    <nav class="nav" aria-label="Main">
+      <button class="nav-btn" data-target="#hero">خانه</button>
+      <button class="nav-btn" data-target="#story">داستان</button>
+      <button class="nav-btn" data-target="#survey">نظرسنجی</button>
+      <button class="nav-btn" data-target="#comments">نظرات</button>
+      <button id="langToggle" class="btn ghost small" title="تغییر زبان داستان">FA / EN</button>
+      <button id="themeToggle" class="btn ghost small" title="تغییر تم">🌓</button>
+    </nav>
   </header>
 
-  <main>
-    <section class="welcome-box">
-      <h2 class="neon-text">به سایت RGB گیمینگ خوش آمدید 🎮</h2>
-      <p class="story">
-        این سایت یک دنیای رنگی و جذاب برای همه‌ی عاشقان تکنولوژی و گیمینگ است.  
-        هر رنگی که می‌بینی، نشون‌دهنده‌ی انرژی و خلاقیتیه که پشت این پروژه هست.  
-      </p>
-      <button class="neon-btn">شروع کنید</button>
-    </section>
-
-    <section class="comments">
-      <h2 class="rgb-text">باکس نظرات 💬</h2>
-      <input type="text" placeholder="اسم شما">
-      <textarea placeholder="نظر شما"></textarea>
-      <button class="neon-btn">ارسال نظر</button>
-
-      <div class="show-comments">
-        <p><b>Ali:</b> فوق‌العاده‌ست! 😍</p>
-        <p><b>Sara:</b> سایت ترکوند! 🔥</p>
+  <!-- قهرمان -->
+  <section id="hero" class="section hero" aria-label="Hero">
+    <div class="hero-content">
+      <h1 class="title neon-stroke">به دنیای RGB بی‌نهایت خوش اومدی</h1>
+      <p class="subtitle">جایی که رنگ‌ها می‌رقصند، نورها می‌درخشند و تجربه‌ها «واااو» می‌شن.</p>
+      <div class="cta-row">
+        <button class="btn primary" id="startBtn">شروع تجربه</button>
+        <button class="btn outline" id="copyLink" data-clipboard="https://example.com">کپی لینک سایت</button>
       </div>
-    </section>
-  </main>
+      <div class="stats">
+        <div class="stat-card">
+          <span class="stat-num" id="likeCount">0</span>
+          <span class="stat-label">لایک‌ها</span>
+          <button class="btn tiny" id="likeBtn" aria-label="افزایش لایک">👍</button>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num" id="visits">0</span>
+          <span class="stat-label">بازدید شما</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">∞</span>
+          <span class="stat-label">رنگ</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- داستان -->
+  <section id="story" class="section container glass" aria-label="Story">
+    <div class="section-head">
+      <h2 class="heading rgb-text">داستان ما</h2>
+      <div class="row gap">
+        <button id="translateBtn" class="btn small">ترجمه ↔ EN</button>
+        <button id="expandStory" class="btn small outline">بزرگ‌نمایی</button>
+      </div>
+    </div>
+    <article id="storyContent" class="story" tabindex="0" aria-live="polite"></article>
+  </section>
+
+  <!-- نظرسنجی -->
+  <section id="survey" class="section container glass" aria-label="Survey">
+    <h2 class="heading">نظرسنجی سریع</h2>
+    <p class="muted">این سایت رو دوست دارید؟ رأی شما زنده ذخیره می‌شه.</p>
+    <div class="survey-options">
+      <label class="chip"><input type="radio" name="vote" value="yes"> بله خیلی</label>
+      <label class="chip"><input type="radio" name="vote" value="maybe"> بد نیست</label>
+      <label class="chip"><input type="radio" name="vote" value="no"> نه</label>
+    </div>
+    <div class="row gap">
+      <button id="voteBtn" class="btn primary">ثبت رأی</button>
+      <button id="resetSurvey" class="btn ghost">بازنشانی</button>
+    </div>
+    <div id="surveyResult" class="survey-result" aria-live="polite"></div>
+  </section>
+
+  <!-- نظرات -->
+  <section id="comments" class="section container glass" aria-label="Comments">
+    <h2 class="heading">نظرات کاربران</h2>
+    <div class="comment-form">
+      <input id="cname" class="input" placeholder="نام شما" aria-label="نام شما">
+      <textarea id="cmessage" class="textarea" rows="4" placeholder="نظر شما" aria-label="نظر شما"></textarea>
+      <div class="row gap">
+        <button id="addComment" class="btn primary">ارسال نظر</button>
+        <button id="clearComments" class="btn ghost">پاک کردن همه</button>
+      </div>
+    </div>
+    <div class="comment-list" id="commentList" aria-live="polite"></div>
+  </section>
+
+  <!-- راهنما/میانبر -->
+  <section class="section container glass tips" aria-label="Tips">
+    <h3 class="heading small">میانبرها</h3>
+    <ul>
+      <li><kbd>L</kbd> : لایک</li>
+      <li><kbd>T</kbd> : تغییر تم</li>
+      <li><kbd>G</kbd> : رفتن به بالا</li>
+    </ul>
+  </section>
+
+  <!-- فوتر -->
+  <footer class="foot">
+    <small>© HelloSite • Crafted by Mohammad Mahdi • v1.0</small>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
   <script src="script.js"></script>
 </body>
 </html>
-
